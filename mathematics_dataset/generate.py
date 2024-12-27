@@ -30,12 +30,12 @@ from mathematics_dataset.modules import modules
 import six
 from six.moves import range
 
-
 FLAGS = flags.FLAGS
+THOUSAND = 1000
 
 flags.DEFINE_string('filter', '', 'restrict to matching module names')
-flags.DEFINE_integer('per_train_module', 10, 'Num of examples per train module')
-flags.DEFINE_integer('per_test_module', 10, 'Num of examples per test module')
+flags.DEFINE_integer('per_train_module', 10 * THOUSAND, 'Num of examples per train module')
+flags.DEFINE_integer('per_test_module', 10 *THOUSAND, 'Num of examples per test module')
 flags.DEFINE_bool('show_dropped', False, 'Whether to print dropped questions')
 
 
