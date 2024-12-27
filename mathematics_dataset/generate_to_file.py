@@ -34,7 +34,6 @@ from __future__ import division
 from __future__ import print_function
 
 import json
-
 import os
 
 # Dependency imports
@@ -62,7 +61,7 @@ def main(unused_argv):
 
     logging.info('Writing to %s', output_dir)
     os.makedirs(output_dir)
-    json_dict= []
+    json_dict = []
     for regime, flat_modules in tqdm(six.iteritems(generate.filtered_modules)):
         regime_dir = os.path.join(output_dir, regime)
         os.mkdir(regime_dir)
@@ -71,7 +70,8 @@ def main(unused_argv):
             path = os.path.join(regime_dir, module_name + '.json')
             for _ in trange(per_module):
                 problem, _ = generate.sample_from_module(module)
-                json_dict.append({"question":str(problem.question), "answer":str(problem.answer)})
+                json_dict.append(
+                    {"question": str(problem.question), "answer": str(problem.answer)})
             json.dump(json_dict, open(path, 'w'))
             logging.info('Written %s', path)
 
